@@ -1,5 +1,6 @@
 from enum import Enum
-from turtle import forward
+
+import RPi.GPIO as GPIO
     
 class expectedMotorVelocitySign(Enum):
     forward = 1
@@ -21,10 +22,15 @@ class encoder():
         self.side = side
         self.count = 0 # the internal encoder count
         
+        
     def updateEncoder(self, expectedSign:expectedMotorVelocitySign):
         self.expectedSign = expectedSign
         self.count += expectedMotorVelocitySign # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         
+    def update(self):
+        GPIO.add_event_detect(self.pin, GPIO.BOTH, callback = self.updateEncoder, bouncetime = 20)
+        
+    
         
 
         
