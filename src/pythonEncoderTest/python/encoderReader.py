@@ -1,7 +1,7 @@
 from enum import Enum
 
 import RPi.GPIO as GPIO
-from time import time
+import time
     
 class expectedMotorVelocitySign(Enum):
     forward = 1
@@ -37,6 +37,7 @@ class encoder():
 
     def update(self):
         GPIO.add_event_detect(self.pin, GPIO.BOTH, callback = self.updateEncoder, bouncetime = 20)
+
         
     
 
