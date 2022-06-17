@@ -21,6 +21,7 @@ class encoder():
         self.pin = pin
         self.side = side
         self.count = 0 # the internal encoder count
+        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         
         
     def updateEncoder(self):
