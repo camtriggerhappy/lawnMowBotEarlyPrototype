@@ -23,7 +23,7 @@ class encoder():
         self.side = side
         self.count = 0 # the internal encoder count
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.setup(pin, GPIO.IN)
         
         
         
@@ -47,7 +47,6 @@ if __name__ == "__main__":
     while True:
         print(sensor.count) 
         print(GPIO.input(3))
-        time.sleep(.1)
 
         
     
