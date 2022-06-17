@@ -45,7 +45,7 @@ if __name__ == "__main__":
     sensor.setVelocitySign(expectedMotorVelocitySign.forward)
     sensor.update()
     while True:
-        print(sensor.count) 
+
         print(GPIO.input(3))
 
         
