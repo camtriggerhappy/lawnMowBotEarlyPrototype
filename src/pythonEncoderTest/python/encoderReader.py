@@ -1,6 +1,7 @@
 from enum import Enum
 
 import RPi.GPIO as GPIO
+from time import time
     
 class expectedMotorVelocitySign(Enum):
     forward = 1
@@ -46,6 +47,7 @@ if __name__ == "__main__":
     while True:
         print(sensor.count) 
         print(GPIO.input(3))
+        time.sleep(.1)
 
         
     
