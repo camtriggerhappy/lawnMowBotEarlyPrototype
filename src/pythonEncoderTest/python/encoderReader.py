@@ -23,15 +23,24 @@ class encoder():
         self.count = 0 # the internal encoder count
         
         
-    def updateEncoder(self, expectedSign:expectedMotorVelocitySign):
+    def updateEncoder(self):
         self.expectedSign = expectedSign
         self.count += expectedMotorVelocitySign # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         
+    def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
+        self.expectedSign = expectedSign
+
     def update(self):
         GPIO.add_event_detect(self.pin, GPIO.BOTH, callback = self.updateEncoder, bouncetime = 20)
         
     
-        
+
+if __name__ == "__main__":
+    sensor = encoder(3 , "right")
+    sensor.setVelocitySign(expectedMotorVelocitySign.forward)
+    sensor.update()
+    while True:
+        print(sensor.count) 
 
         
     
