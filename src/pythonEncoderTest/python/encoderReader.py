@@ -1,6 +1,6 @@
 from enum import Enum
 
-import RPI.GPIO as GPIO
+import RPi.GPIO as GPIO
     
 class expectedMotorVelocitySign(Enum):
     forward = 1
