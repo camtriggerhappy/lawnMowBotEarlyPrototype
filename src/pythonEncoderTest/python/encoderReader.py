@@ -22,7 +22,7 @@ class encoder():
         self.side = side
         self.count = 0 # the internal encoder count
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         
         
         
