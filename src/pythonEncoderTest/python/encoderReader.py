@@ -29,7 +29,7 @@ class encoder():
         
     def updateEncoder(self):
 
-        self.count += expectedMotorVelocitySign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
+        self.count += self.expectedMotorVelocitySign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         print("called Back")
         
     def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
