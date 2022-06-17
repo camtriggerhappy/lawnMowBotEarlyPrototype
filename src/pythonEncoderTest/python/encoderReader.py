@@ -46,7 +46,7 @@ if __name__ == "__main__":
     sensor.update()
     while True:
 
-        print(GPIO.input(3))
+        print(sensor.count)
 
         
     
