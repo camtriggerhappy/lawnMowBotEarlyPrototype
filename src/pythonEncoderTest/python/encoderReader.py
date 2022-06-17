@@ -22,6 +22,7 @@ class encoder():
         self.pin = pin
         self.side = side
         self.count = 0 # the internal encoder count
+    
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.IN)
         GPIO.add_event_detect(self.pin, GPIO.BOTH, callback = self.updateEncoder, bouncetime = 20)
@@ -30,7 +31,7 @@ class encoder():
         
     def updateEncoder(self, channel):
 
-        self.count += self.expectedMotorVelocitySign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
+        self.count += self.expectedSign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         print("called Back")
         
     def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
