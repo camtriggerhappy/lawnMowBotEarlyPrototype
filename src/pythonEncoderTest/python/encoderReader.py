@@ -1,6 +1,6 @@
 from enum import Enum
 
-import RPi.GPIO as GPIO
+import RPI.GPIO as GPIO
     
 class expectedMotorVelocitySign(Enum):
     forward = 1
@@ -21,7 +21,9 @@ class encoder():
         self.pin = pin
         self.side = side
         self.count = 0 # the internal encoder count
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        
         
         
     def updateEncoder(self):
