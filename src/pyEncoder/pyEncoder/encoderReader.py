@@ -4,6 +4,7 @@ from rclpy.node import Node
 
 import RPi.GPIO as GPIO
 import time
+from 
     
 class expectedMotorVelocitySign(Enum):
     forward = 1
@@ -12,7 +13,7 @@ class expectedMotorVelocitySign(Enum):
     
     
 
-class encoder():
+class encoder(Node):
     
     def __init__(self, pin:int, side:str):
         """
@@ -21,10 +22,18 @@ class encoder():
             pin (int): the pin number the encoder is on
             side (str): what position is the encoder located in
         """
+        
+        super().__init__(side + "_side_node")
+    
         self.pin = pin
         self.side = side
         self.count = 0 # the internal encoder count
     
+        self.sideSubscriber = self.create_subscription(
+            
+            
+        )
+        
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.IN)
         GPIO.add_event_detect(self.pin, GPIO.BOTH, callback = self.updateEncoder, bouncetime = 20)
