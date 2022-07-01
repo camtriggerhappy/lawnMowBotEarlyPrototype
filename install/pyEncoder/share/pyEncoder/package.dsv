@@ -4,3 +4,6 @@ source;share/pyEncoder/hook/pythonpath.sh
 source;share/pyEncoder/hook/ament_prefix_path.ps1
 source;share/pyEncoder/hook/ament_prefix_path.dsv
 source;share/pyEncoder/hook/ament_prefix_path.sh
+source;../../build/pyEncoder/share/pyEncoder/hook/pythonpath_develop.ps1
+source;../../build/pyEncoder/share/pyEncoder/hook/pythonpath_develop.dsv
+source;../../build/pyEncoder/share/pyEncoder/hook/pythonpath_develop.sh
