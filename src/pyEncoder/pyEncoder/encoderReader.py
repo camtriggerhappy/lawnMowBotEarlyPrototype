@@ -14,9 +14,9 @@ class expectedMotorVelocitySign(Enum):
     
     
 
-class encoder(Node):
+class encoder():
     
-    def __init__(self, pin:int, side:str):
+    def __init__(self, pin:int, side:str, distPerTick:float):
         """
 
         Args:
@@ -30,11 +30,9 @@ class encoder(Node):
         self.side = side
         self.count = 0 # the internal encoder count
         self.prevTime = datetime.now()
+        self.distPerTick = distPerTick
     
-        self.sideSubscriber = self.create_subscription(
-            
-            
-        )
+
         
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.IN)
@@ -47,10 +45,16 @@ class encoder(Node):
         self.count += self.expectedSign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         print("called Back")
         self.prevTime = datetime.now()
-        velocity = self.expectedSign.value * ((math.pi/10)/timeDiff)
+        self.velocity = self.expectedSign.value * ((math.pi/10)/timeDiff)
         
     def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
         self.expectedSign = expectedSign
+        
+    def getDistance(self):
+        return self.distPerTick * self.count
+    
+    def getVelocity(self):
+        return self.velocity * self.distPerTick
 
 
 
