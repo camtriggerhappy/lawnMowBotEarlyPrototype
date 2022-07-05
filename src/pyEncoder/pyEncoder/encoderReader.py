@@ -16,7 +16,7 @@ class expectedMotorVelocitySign(Enum):
 
 class encoder():
     
-    def __init__(self, pin:int, side:str, distPerTick:float):
+    def __init__(self, pin:int, side:str, distPerTick:float, tickPerRot):
         """
 
         Args:
@@ -31,6 +31,7 @@ class encoder():
         self.count = 0 # the internal encoder count
         self.prevTime = datetime.now()
         self.distPerTick = distPerTick
+        self.tickPerRot = tickPerRot
     
 
         
@@ -51,7 +52,7 @@ class encoder():
         self.expectedSign = expectedSign
         
     def getDistance(self):
-        return self.distPerTick * self.count
+        return self.distPerTick * (self.count / self.tickPerRot)
     
     def getVelocity(self):
         return self.velocity * self.distPerTick
