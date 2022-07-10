@@ -1,7 +1,7 @@
 import lgpio
 
 def main():
-    diff = differentialDrive
+    diff = differentialDrive()
     diff.forward()
 
 class differentialDrive():
