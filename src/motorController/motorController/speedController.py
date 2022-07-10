@@ -12,8 +12,8 @@ class differentialDrive():
         
         
     def forward(self):
-        lgpio.tx_pwm(self.h, self.leftMotor,80)
-        lgpio.tx_pwm(self.h, self.rightMotor,80)
+        lgpio.gpio_write(self.h, self.leftMotor,1)
+        lgpio.gpio_write(self.h, self.rightMotor,1)
 
 
 if __name__ == '__main__':
