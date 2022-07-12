@@ -13,9 +13,10 @@ class differentialDrive():
         
         
     def forward(self):
-        lgpio.gpio_write(self.h, self.rightMotorSpeed,0)
+        lgpio.tx_pwm(self.h, self.rightMotorSpeed,120, 80)
         lgpio.gpio_write(self.h, self.rightMotorDirectiom,1)
 
 
 if __name__ == '__main__':
     main()
+s
