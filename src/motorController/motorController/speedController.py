@@ -1,5 +1,7 @@
 
 import lgpio
+from pyEncoder.pyEncoder.encoderReader import encoder
+
 
 def main():
     handler = lgpio.gpiochip_open(0)
