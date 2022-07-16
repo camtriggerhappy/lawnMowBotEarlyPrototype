@@ -1,6 +1,5 @@
 
 import lgpio
-from pyEncoder.pyEncoder.encoderReader import encoder
 
 
 def main():
