@@ -1,0 +1,15 @@
+package.xml
+setup.cfg
+setup.py
+../../build/pyEncoder/pyEncoder.egg-info/PKG-INFO
+../../build/pyEncoder/pyEncoder.egg-info/SOURCES.txt
+../../build/pyEncoder/pyEncoder.egg-info/dependency_links.txt
+../../build/pyEncoder/pyEncoder.egg-info/entry_points.txt
+../../build/pyEncoder/pyEncoder.egg-info/requires.txt
+../../build/pyEncoder/pyEncoder.egg-info/top_level.txt
+../../build/pyEncoder/pyEncoder.egg-info/zip-safe
+pyEncoder/encoderReader.py
+resource/pyEncoder
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
