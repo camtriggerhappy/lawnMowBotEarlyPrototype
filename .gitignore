@@ -130,6 +130,7 @@ dmypy.json
 src/log/
 install/
 .vscode
+build/*
 build/
 
 
