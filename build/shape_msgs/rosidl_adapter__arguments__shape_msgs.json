@@ -1,9 +1,0 @@
-{
-  "package_name": "shape_msgs",
-  "non_idl_tuples": [
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/shape_msgs:msg/Mesh.msg",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/shape_msgs:msg/MeshTriangle.msg",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/shape_msgs:msg/Plane.msg",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/shape_msgs:msg/SolidPrimitive.msg"
-  ]
-}

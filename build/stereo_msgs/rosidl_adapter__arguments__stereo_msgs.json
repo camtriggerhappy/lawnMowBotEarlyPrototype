@@ -1,6 +1,0 @@
-{
-  "package_name": "stereo_msgs",
-  "non_idl_tuples": [
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/stereo_msgs:msg/DisparityImage.msg"
-  ]
-}

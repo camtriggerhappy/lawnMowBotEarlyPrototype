@@ -1,9 +1,0 @@
-{
-  "package_name": "trajectory_msgs",
-  "non_idl_tuples": [
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/trajectory_msgs:msg/JointTrajectory.msg",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/trajectory_msgs:msg/JointTrajectoryPoint.msg",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/trajectory_msgs:msg/MultiDOFJointTrajectory.msg",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/trajectory_msgs:msg/MultiDOFJointTrajectoryPoint.msg"
-  ]
-}

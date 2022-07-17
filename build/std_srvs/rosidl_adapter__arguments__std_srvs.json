@@ -1,8 +1,0 @@
-{
-  "package_name": "std_srvs",
-  "non_idl_tuples": [
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/std_srvs:srv/Empty.srv",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/std_srvs:srv/SetBool.srv",
-    "/home/cameron/dev_ws/src/common_interfaces/common_interfaces/std_srvs:srv/Trigger.srv"
-  ]
-}

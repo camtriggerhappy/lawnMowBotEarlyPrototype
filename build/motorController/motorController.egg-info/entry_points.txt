@@ -1,3 +1,0 @@
-[console_scripts]
-speedController = motorController.speedController:main
-
