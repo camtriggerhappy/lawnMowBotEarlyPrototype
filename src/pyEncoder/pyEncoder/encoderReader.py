@@ -24,7 +24,7 @@ class encoder():
             side (str): what position is the encoder located in
         """
         
-        super().__init__(side + "_side_node")
+        #super().__init__(side + "_side_node")
     
         self.pin = pin
         self.side = side
