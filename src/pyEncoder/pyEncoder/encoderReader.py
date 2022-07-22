@@ -42,12 +42,13 @@ class encoder():
         
         
         
+        
     def updateEncoder(self, channel):
         timeDiff = datetime.now() - self.prevTime
         self.count += self.expectedSign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         print("called Back")
         self.prevTime = datetime.now()
-        self.velocity = self.expectedSign.value * ((math.pi/10)/timeDiff.seconds) * self.radius
+        self.velocity = self.expectedSign.value * ((math.pi/10)/timeDiff.total_seconds()) * self.radius
         
     def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
         self.expectedSign = expectedSign
