@@ -32,6 +32,7 @@ class encoder():
         self.prevTime = datetime.now()
         self.distPerTick = distPerTick
         self.tickPerRot = tickPerRot
+        self.radius = 32.5 / 1000
     
 
         
@@ -46,16 +47,16 @@ class encoder():
         self.count += self.expectedSign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
         print("called Back")
         self.prevTime = datetime.now()
-        self.velocity = self.expectedSign.value * ((math.pi/10)/timeDiff)
+        self.velocity = self.expectedSign.value * ((math.pi/10)/timeDiff) * self.radius
         
     def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
         self.expectedSign = expectedSign
         
     def getDistance(self):
-        return self.distPerTick * (self.count / self.tickPerRot)
+        return self.radius * (self.count / self.tickPerRot)
     
     def getVelocity(self):
-        return self.velocity * self.distPerTick
+        return self.velocity * self.radius
 
 
 
@@ -63,12 +64,13 @@ class encoder():
     
 
 if __name__ == "__main__":
-    sensor = encoder(3 , "right")
+    sensor = encoder(20 , "right")
     sensor.setVelocitySign(expectedMotorVelocitySign.forward)
 
     while True:
 
         print(sensor.count)
+        print(sensor.getVelocity + "m/s")
         time.sleep(.1)
 
         
