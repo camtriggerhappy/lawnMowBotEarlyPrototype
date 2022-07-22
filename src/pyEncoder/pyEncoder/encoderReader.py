@@ -69,7 +69,7 @@ if __name__ == "__main__":
     while True:
 
         print(sensor.count)
-        print(sensor.getVelocity + "m/s")
+        print(sensor.getVelocity() + "m/s")
         time.sleep(.1)
 
         
