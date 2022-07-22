@@ -32,6 +32,7 @@ class encoder():
         self.distPerTick = distPerTick
         self.tickPerRot = tickPerRot
         self.radius = 32.5 / 1000
+        self.velocity = 0
     
 
         
