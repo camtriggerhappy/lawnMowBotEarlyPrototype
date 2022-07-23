@@ -33,7 +33,7 @@ class differentialDrive(Node):
             Twist,
             "cmd_vel",
             self.setTwist,
-            1
+            12
         )
         
         
@@ -47,8 +47,9 @@ class differentialDrive(Node):
         self.publishDir.publish(msg)
         
     def setTwist(self, Twist):
-        self.Twist = Twist
         print("recived")
+        self.Twist = Twist
+        
         
         
         
