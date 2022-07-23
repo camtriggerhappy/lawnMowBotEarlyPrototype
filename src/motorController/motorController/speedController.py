@@ -10,6 +10,7 @@ from geometry_msgs.msg import Twist
 def main():
     rclpy.init()
     driveTrain = differentialDrive()
+    print("started")
     rclpy.spin(driveTrain)
     
  
