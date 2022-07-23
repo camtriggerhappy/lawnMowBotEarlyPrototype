@@ -27,14 +27,16 @@ class differentialDrive(Node):
         
         self.Direction = "forward"
         self.publishDir = self.create_publisher(String, "direction", 12)
-        
+        print("creating subscriber")    
         self.twistSubscription = self.create_subscription
         (
+    
             Twist,
             "cmd_vel",
             self.setTwist,
             12
         )
+        print("created subscriber")    
         
         
         
