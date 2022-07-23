@@ -1,8 +1,10 @@
 
+
 import lgpio
 from rclpy.node import Node
 import rclpy
-from std_msgs import String
+from std_msgs.msg import String
+from geometry_msgs.msg import Twist
 
 
 def main():
@@ -13,8 +15,9 @@ def main():
  
 
 class differentialDrive(Node):
-    def __init__(self, h):
-        self.h = h
+    def __init__(self):
+        super().__init__("differentialDrive")
+        self.h = lgpio.gpiochip_open(0)
         self.rightMotorSpeed = 14
         self.rightMotorDirectiom = 15
         
@@ -24,20 +27,35 @@ class differentialDrive(Node):
         self.Direction = "forward"
         self.publishDir = self.create_publisher(String, "direction", 12)
         
+        self.twistSubscription = self.create_subscription
+        (
+            Twist,
+            "cmd_vel",
+            self.setTwist,
+            1
+        )
+        
+        
+        
+        
+        
         
     def publishDir(self):
         msg = String()
         
         self.publishDir.publish(msg)
         
+    def setTwist(self, Twist):
+        self.Twist = Twist
         
         
         
-    def forward(self):
-        lgpio.tx_pwm(self.h, self.rightMotorSpeed,120,pwm_duty_cycle=20)
+        
+    def forward(self, speed:float):
+        lgpio.tx_pwm(self.h, self.rightMotorSpeed,120,pwm_duty_cycle=speed)
         lgpio.gpio_write(self.h, self.rightMotorDirectiom,0)
         
-        lgpio.tx_pwm(self.h, self.leftMotorSpeed,120, pwm_duty_cycle=20)
+        lgpio.tx_pwm(self.h, self.leftMotorSpeed,120, pwm_duty_cycle=speed)
         lgpio.gpio_write(self.h, self.leftMotorDirection, 0)
         print("moving")
 
