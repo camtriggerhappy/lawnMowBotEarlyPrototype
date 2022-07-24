@@ -11,8 +11,7 @@ def main():
     rclpy.init()
     driveTrain = differentialDrive()
     print("started")
-    while rclpy.ok():
-        rclpy.spin_once(driveTrain, timeout_sec=0.001)
+    rclpy.spin(driveTrain)
     
  
 
@@ -27,7 +26,6 @@ class differentialDrive(Node):
         self.leftMotorDirection = 23
         
         self.Direction = "forward"
-        self.publishDir = self.create_publisher(String, "direction", 12)
         print("creating subscriber")    
         self.twistSubscription = self.create_subscription(
     
@@ -38,6 +36,8 @@ class differentialDrive(Node):
         )
         print("created subscriber")    
         
+        self.publishDir = self.create_publisher(String, "direction", 12)
+  
         
         
         
