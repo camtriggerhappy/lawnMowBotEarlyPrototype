@@ -1,6 +1,6 @@
 
 
-import lgpio
+import pigpio 
 from rclpy.node import Node
 import rclpy
 from std_msgs.msg import String
@@ -18,7 +18,7 @@ def main():
 class differentialDrive(Node):
     def __init__(self):
         super().__init__("differentialDrive")
-        self.h = lgpio.gpiochip_open(0)
+        self.h = pigpio.pi()
         self.rightMotorSpeed = 14
         self.rightMotorDirectiom = 15
         
@@ -57,11 +57,12 @@ class differentialDrive(Node):
         
         
     def forward(self, speed:float):
-        lgpio.tx_pwm(self.h, self.rightMotorSpeed,120,pwm_duty_cycle=speed)
-        lgpio.gpio_write(self.h, self.rightMotorDirectiom,0)
+        self.h.set_PWM_dutycycle(self.leftMotorSpeed,speed)
+
+        self.h.write(self.rightMotorDirectiom,0)
         
-        lgpio.tx_pwm(self.h, self.leftMotorSpeed,120, pwm_duty_cycle=speed)
-        lgpio.gpio_write(self.h, self.leftMotorDirection, 0)
+        self.h.set_PWM_dutycycle(self.rightMotorDirectiom,speed)
+        self.h.write(self.leftMotorDirection, 0)
         print("moving")
 
 
