@@ -58,7 +58,6 @@ class differentialDrive(Node):
         
     def forward(self, speed:float):
         self.h.set_PWM_dutycycle(self.leftMotorSpeed,speed)
-
         self.h.write(self.rightMotorDirectiom,0)
         
         self.h.set_PWM_dutycycle(self.rightMotorDirectiom,speed)
