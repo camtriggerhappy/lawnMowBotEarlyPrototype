@@ -2,8 +2,8 @@ from datetime import datetime
 from enum import Enum
 import math
 
+import pigpio
 
-import RPi.GPIO as GPIO
 import time
     
 class expectedMotorVelocitySign(Enum):
@@ -33,12 +33,13 @@ class encoder():
         self.tickPerRot = tickPerRot
         self.radius = 32.5 / 1000
         self.velocity = 0
+        self.h = pigpio.pi()
     
 
-        
+        self.h.callback(self.pin, pigpio.EITHER_EDGE, self.updateEncoder)
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.IN)
-        GPIO.add_event_detect(self.pin, GPIO.BOTH, callback = self.updateEncoder, bouncetime = 20)
+
         
         
         
