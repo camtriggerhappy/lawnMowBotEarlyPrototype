@@ -25,8 +25,8 @@ class Quaternion:
 
 class driveController(Node):
     def __init__(self):
-        self.leftEncoder = encoder(3, "left", 5)
-        self.rightEncoder = encoder(3, "right", 5)
+        self.leftEncoder = encoder(3, "left", 5,20)
+        self.rightEncoder = encoder(3, "right", 5,20)
         self.wheelBase = .104
         self.odomBrodcaster = transform_broadcaster()
         self.x = 0
