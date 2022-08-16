@@ -154,7 +154,7 @@ class encoder():
         self.tickPerRot = tickPerRot
         self.radius = 32.5 / 1000
         self.velocity = 0
-        self.h = pigpio.pi('raspberrypi')
+        self.h = pigpio.pi("soft", 8888)
     
 
         self.h.callback(self.pin, pigpio.EITHER_EDGE, self.updateEncoder)
@@ -186,7 +186,7 @@ def main():
     rclpy.init()
     controller = driveController()
     #sensor = encoder(38 , "right", ((math.pi/10) * (32.5/1000)), 20)
-    sensor.setVelocitySign(expectedMotorVelocitySign.forward)
+    #sensor.setVelocitySign(expectedMotorVelocitySign.forward)
     
     print("running")
 
