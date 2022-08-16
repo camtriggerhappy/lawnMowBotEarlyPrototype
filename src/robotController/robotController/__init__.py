@@ -180,15 +180,8 @@ class encoder():
 
 
 
-        
     
-
-
-
-            
-    
-    
-if __name__ == "main":
+def main():
     controller = driveController()
     sensor = encoder(38 , "right", ((math.pi/10) * (32.5/1000)), 20)
     sensor.setVelocitySign(expectedMotorVelocitySign.forward)
@@ -197,4 +190,13 @@ if __name__ == "main":
 
     rclpy.spin(controller)
     
+    
+
+
+
+            
+    
+    
+if __name__ == "main":
+    main()
     
