@@ -25,6 +25,7 @@ class Quaternion:
 
 class driveController(Node):
     def __init__(self):
+        super().__init__("robotController")
         self.leftEncoder = encoder(3, "left", 5,20)
         self.rightEncoder = encoder(3, "right", 5,20)
         self.wheelBase = .104
