@@ -38,7 +38,7 @@ class driveController(Node):
         self.previousCallTime = self.get_clock().now()
         
         self. commandSubscription = self.create_subscription(
-            geometry_msgs.Twist,
+            Twist,
             "cmd_vel",
             self.setSpeedGoals,
             12
