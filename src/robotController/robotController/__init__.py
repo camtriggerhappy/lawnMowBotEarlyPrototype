@@ -163,6 +163,8 @@ if __name__ == "main":
     controller = driveController()
     sensor = encoder(38 , "right", ((math.pi/10) * (32.5/1000)), 20)
     sensor.setVelocitySign(expectedMotorVelocitySign.forward)
+    
+    print("running")
 
     rclpy.spin(controller)
     
