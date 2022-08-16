@@ -47,7 +47,7 @@ class driveController(Node):
         self.publishOdom = self.create_publisher(
             Odometry,
             "odom",
-            self.updatePose,
+            20,
         )
         
         
