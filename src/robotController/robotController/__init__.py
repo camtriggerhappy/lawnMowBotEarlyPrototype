@@ -1,7 +1,6 @@
 
 from rclpy.node import Node
 import rclpy
-import common_interfaces
 import tf2_geometry_msgs
 import geometry_msgs
 import nav_msgs
