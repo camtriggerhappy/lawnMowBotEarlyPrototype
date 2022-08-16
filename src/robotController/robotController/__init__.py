@@ -7,7 +7,7 @@ import geometry_msgs
 import nav_msgs
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Vector3
-from tf2_ros import transform_broadcaster, TransformStamped
+from tf2_ros import transform_broadcaster, TransformStamped, TransformBroadcaster
 
     
 
@@ -28,7 +28,7 @@ class driveController(Node):
         self.leftEncoder = encoder(3, "left", 5,20)
         self.rightEncoder = encoder(3, "right", 5,20)
         self.wheelBase = .104
-        self.odomBrodcaster = transform_broadcaster()
+        self.odomBrodcaster = TransformBroadcaster(self)
         self.x = 0
         self.y = 0
         self.rotation = 0
