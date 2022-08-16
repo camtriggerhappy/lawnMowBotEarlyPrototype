@@ -154,7 +154,7 @@ class encoder():
         self.tickPerRot = tickPerRot
         self.radius = 32.5 / 1000
         self.velocity = 0
-        self.h = pigpio.pi()
+        self.h = pigpio.pi('raspberrypi')
     
 
         self.h.callback(self.pin, pigpio.EITHER_EDGE, self.updateEncoder)
