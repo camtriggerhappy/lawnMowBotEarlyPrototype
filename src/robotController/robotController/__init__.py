@@ -1,4 +1,5 @@
 
+import math
 from rclpy.node import Node
 import rclpy
 import tf2_geometry_msgs
@@ -7,8 +8,20 @@ import nav_msgs
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Vector3
 from tf2_ros import transform_broadcaster, TransformStamped
-import tf_transformations
+import transforms3d
+    
 
+
+class Quaternion:
+    w: float
+    x: float
+    y: float
+    z: float
+
+
+    
+    
+    
 
 class driveController(Node):
     def __init__(self):
@@ -19,6 +32,8 @@ class driveController(Node):
         self.x = 0
         self.y = 0
         self.rotation = 0
+        self.pitch = 0
+        self.yaw = 0
         self.previousCallTime = self.get_clock().now()
         
         self. commandSubscription = self.create_subscription(
@@ -42,6 +57,22 @@ class driveController(Node):
     def getAngularVelocity(self):
         return (self.rightEncoder.getVelocity() + self.leftEncoder.getVelocity())/self.wheelBase
     
+    def quaternion_from_euler(self):
+
+        cy = math.cos(self.rotation * 0.5)
+        sy = math.sin(self.rotation * 0.5)
+        cp = math.cos(self.pitch * 0.5)
+        sp = math.sin(self.pitch * 0.5)
+        cr = math.cos(self.roll * 0.5)
+        sr = math.sin(self.roll * 0.5)
+
+        q = Quaternion()
+        q.w = cy * cp * cr + sy * sp * sr
+        q.x = cy * cp * sr - sy * sp * cr
+        q.y = sy * cp * sr + cy * sp * cr
+        q.z = sy * cp * cr - cy * sp * sr
+        return q 
+
     def updatePose(self):
         currentTime = self.get_clock().now()
         
@@ -54,12 +85,13 @@ class driveController(Node):
         self.odomTrans.transform.translation.x = self.x
         self.odomTrans.transform.translation.y = self.y
         self.odomTrans.transform.translation.z = 0.0
-        self.odomTrans.transform.rotation = tf_transformations.createQuaternionMsgFromYaw(self.rotation)
+
+        self.odomTrans.transform.rotation = self.quaternion_from_euler()
         
         self.odomBrodcaster.sendTransform(self.odomTrans)
         
         
-        self.angle += self.getAngularVelocity() * (currentTime - self.previousCallTime)
+        self.rotation += self.getAngularVelocity() * (currentTime - self.previousCallTime)
         self.x
         self.y
         self.odom:Odometry
@@ -80,10 +112,7 @@ class driveController(Node):
     
     def setSpeedGoals(self):
         pass
-    
-    
-    
-    
+
 
     
     
