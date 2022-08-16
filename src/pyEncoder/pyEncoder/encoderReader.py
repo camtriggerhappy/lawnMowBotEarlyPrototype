@@ -37,8 +37,6 @@ class encoder():
     
 
         self.h.callback(self.pin, pigpio.EITHER_EDGE, self.updateEncoder)
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(pin, GPIO.IN)
 
         
         
