@@ -1,5 +1,5 @@
-import pyEncoder
-from pyEncoder.pyEncoder.encoderReader import encoder
+
+from encoderReader import encoder
 from rclpy.node import Node
 import rclpy
 import common_interfaces
