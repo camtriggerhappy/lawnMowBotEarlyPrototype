@@ -106,6 +106,7 @@ class driveController(Node):
         self.odom.twist.twist.angular.z = self.getAngularVelocity()
         
         self.publishOdom.publish(self.odom)
+        print("published odom")
         
         self.lastTime = currentTime
         
