@@ -37,18 +37,19 @@ class driveController(Node):
         self.yaw = 0
         self.previousCallTime = self.get_clock().now()
         
-        self. commandSubscription = self.create_subscription(
-            Twist,
-            "cmd_vel",
-            self.setSpeedGoals,
-            12
-            )
         
         self.publishOdom = self.create_publisher(
             Odometry,
             "odom",
             20,
         )
+        
+        self. commandSubscription = self.create_subscription(
+            Twist,
+            "cmd_vel",
+            self.setSpeedGoals,
+            12
+            )
         
         
         
@@ -86,6 +87,7 @@ class driveController(Node):
         self.odomTrans.transform.translation.x = self.x
         self.odomTrans.transform.translation.y = self.y
         self.odomTrans.transform.translation.z = 0.0
+        print("quaternion")
 
         self.odomTrans.transform.rotation = self.quaternion_from_euler()
         
