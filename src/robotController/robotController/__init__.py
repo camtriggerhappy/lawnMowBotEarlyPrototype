@@ -109,9 +109,16 @@ class driveController(Node):
         self.x
         self.y
         self.odom:Odometry
-        self.odom._header.stamp = self.get_clock().now()
+        self.odom._header.stamp = self.get_clock().now().to_msg()
         self.odom.header.frame_id =  "odom"
-        self.odom.pose = Pose(self.x, self.y, self.rotation)
+        self.odom.pose.pose.position.x = float(self.x)
+        self.odom.pose.pose.position.x = float(self.y) 
+        self.odom.pose.pose.orientation.w = Quaternion.w 
+        self.odom.pose.pose.orientation.x = Quaternion.x 
+        self.odom.pose.pose.orientation.y = Quaternion.y 
+        self.odom.pose.pose.orientation.z = Quaternion.z
+        
+    
         
         self.odom.child_frame_id = "base_link"
         self.odom.twist.twist.linear.x = self.getVelocity()
