@@ -79,10 +79,10 @@ class driveController(Node):
         return q 
 
     def updatePose(self):
-        currentTime = self.get_clock().now()
+        
         
         self.odomTrans:TransformStamped = TransformStamped()
-        self.odomTrans.header.stamp = self.get_clock().now()
+        self.odomTrans.header.stamp = self.get_clock().now().to_msg()
           
         self.odomTrans.header.frame_id = "odom"
         self.odomTrans.child_frame_id = "base_link"
