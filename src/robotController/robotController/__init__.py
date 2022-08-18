@@ -35,6 +35,7 @@ class driveController(Node):
         self.rotation = 0
         self.pitch = 0
         self.yaw = 0
+        self.roll = 0
         self.previousCallTime = self.get_clock().now()
         
         timer_period = 0.1  # seconds
