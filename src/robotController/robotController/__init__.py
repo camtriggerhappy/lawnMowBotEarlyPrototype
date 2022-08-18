@@ -93,7 +93,13 @@ class driveController(Node):
         self.odomTrans.transform.translation.z = 0.0
         print("quaternion")
 
-        self.odomTrans.transform.rotation = self.quaternion_from_euler()
+        Quaternion = self.quaternion_from_euler()
+        self.odomTrans.transform.rotation.w = Quaternion.w 
+        self.odomTrans.transform.rotation.x = Quaternion.x
+        self.odomTrans.transform.rotation.y = Quaternion.y
+        self.odomTrans.transform.rotation.z = Quaternion.z
+        
+        
         
         self.odomBrodcaster.sendTransform(self.odomTrans)
         
