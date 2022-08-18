@@ -79,7 +79,7 @@ class driveController(Node):
         return q 
 
     def updatePose(self):
-        
+        currentTime = self.get_clock().now()
         
         self.odomTrans:TransformStamped = TransformStamped()
         self.odomTrans.header.stamp = self.get_clock().now().to_msg()
@@ -87,8 +87,8 @@ class driveController(Node):
         self.odomTrans.header.frame_id = "odom"
         self.odomTrans.child_frame_id = "base_link"
    
-        self.odomTrans.transform.translation.x = self.x
-        self.odomTrans.transform.translation.y = self.y
+        self.odomTrans.transform.translation.x = float(self.x)
+        self.odomTrans.transform.translation.y = float(self.y)
         self.odomTrans.transform.translation.z = 0.0
         print("quaternion")
 
