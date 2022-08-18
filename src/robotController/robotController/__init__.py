@@ -104,7 +104,7 @@ class driveController(Node):
         self.odomBrodcaster.sendTransform(self.odomTrans)
         
         
-        self.rotation += self.getAngularVelocity() * (currentTime - self.previousCallTime)
+        self.rotation += self.getAngularVelocity() * (currentTime - self.previousCallTime).nanoseconds/1e9
         self.x
         self.y
         self.odom:Odometry
