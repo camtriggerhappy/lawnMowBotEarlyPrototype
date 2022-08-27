@@ -132,7 +132,7 @@ install/
 .vscode
 build/*
 build/
-
+/build/*
 
 
 
