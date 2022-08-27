@@ -125,5 +125,17 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
-.pyre/
+# Pyre type che
+
+src/log/
+install/
+.vscode
+build/*
+build/
+
+
+
+
+
+
+
