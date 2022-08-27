@@ -114,7 +114,7 @@ class driveController(Node):
         self.odom.pose.pose.position.x = float(self.x)
         self.odom.pose.pose.position.y = float(self.y) 
         self.odom.pose.pose.orientation.w = Quaternion.w 
-        self.odom.pose.pose.orientatio.n.x = Quaternion.x 
+        self.odom.pose.pose.orientation.x = Quaternion.x 
         self.odom.pose.pose.orientation.y = Quaternion.y 
         self.odom.pose.pose.orientation.z = Quaternion.z
         
