@@ -27,7 +27,7 @@ class differentialDrive(Node):
         self.leftMotorDirection = 23
         
         self.Twist = Twist
-        self.pid = PID(1, 0, .3)
+        self.pid = PID(1, 0, .3, output_limits=(-126, 126))
         
         self.Direction = "forward"
         print("creating subscriber")    
