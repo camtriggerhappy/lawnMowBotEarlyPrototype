@@ -43,6 +43,7 @@ class differentialDrive(Node):
     def setTwist(self, Twist):
         print("recived")
         self.Twist = Twist
+        self.drive(100)
         
         
         
