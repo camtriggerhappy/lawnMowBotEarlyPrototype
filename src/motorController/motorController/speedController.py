@@ -23,8 +23,8 @@ class differentialDrive(Node):
         self.rightMotorSpeed = 14
         self.rightMotorDirectiom = 15
         
-        self.leftMotorSpeed = 24
-        self.leftMotorDirection = 23
+        self.leftMotorSpeed = 21
+        self.leftMotorDirection = 20
         
         self.Twist = Twist
         self.pid = PID(1, 0, .3, output_limits=(-126, 126))
