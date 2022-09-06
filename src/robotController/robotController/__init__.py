@@ -178,6 +178,7 @@ class encoder():
         self.velocity = 0
         self.h = pigpio.pi()
         self.tempCount = 0
+        self.expectedSign = expectedMotorVelocitySign.forward
     
 
         self.h.callback(self.pin, pigpio.EITHER_EDGE, self.count)
