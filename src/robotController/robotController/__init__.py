@@ -1,5 +1,6 @@
 
 import math
+import threading
 from rclpy.node import Node
 import rclpy
 import tf2_geometry_msgs
@@ -114,7 +115,7 @@ class driveController(Node):
         self.odom.pose.pose.position.x = float(self.x)
         self.odom.pose.pose.position.y = float(self.y) 
         self.odom.pose.pose.orientation.w = Quaternion.w 
-        self.odom.pose.pose.orientatio.n.x = Quaternion.x 
+        self.odom.pose.pose.orientation.x = Quaternion.x 
         self.odom.pose.pose.orientation.y = Quaternion.y 
         self.odom.pose.pose.orientation.z = Quaternion.z
         
@@ -176,20 +177,31 @@ class encoder():
         self.radius = 32.5 / 1000
         self.velocity = 0
         self.h = pigpio.pi()
+        self.tempCount = 0
+        self.expectedSign = expectedMotorVelocitySign.forward
     
 
-        self.h.callback(self.pin, pigpio.EITHER_EDGE, self.updateEncoder)
+        self.h.callback(self.pin, pigpio.EITHER_EDGE, self.count)
+        self.counterThread = threading.Timer(1.0, self.updateEncoder)
+        self.counterThread.start()
 
         
         
         
         
-    def updateEncoder(self, channel):
+    def updateEncoder(self):
         timeDiff = datetime.now() - self.prevTime
-        self.count += self.expectedSign.value # increment the counter based on whether it should be positive or negative based on the expected motor velocity
+ 
         print("called Back")
         self.prevTime = datetime.now()
-        self.velocity = self.expectedSign.value * ((math.pi/10)/timeDiff.total_seconds()) * self.radius
+        self.velocity = self.expectedSign.value * (((math.pi/10) * self.tempCount)/timeDiff.total_seconds()) * self.radius
+        self.tempCount = 0
+        
+    def count(self, channel):
+        self.tempCount += 1
+        self.count += self.expectedSign.value
+        # increment the counter based on whether it should be positive or negative based on the expected motor velocity
+        
         
     def setVelocitySign(self, expectedSign:expectedMotorVelocitySign ):
         self.expectedSign = expectedSign
